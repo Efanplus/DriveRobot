@@ -9,6 +9,11 @@
 #include <QGroupBox>
 #include <QtSerialPort/QSerialPort>
 #include <QtSerialPort/QSerialPortInfo>
+#include <QTextEdit>
+#include <QPushButton>
+#include <QFrame>
+#include <QLineEdit>
+#include <QLabel>
 
 namespace Ui {
 class QPort;
@@ -29,16 +34,36 @@ public:
     void StringToHex(QString str, QByteArray & senddata);
     void deBlank(QString &strs);
 
+    QString str_order;
+    QString str_receive;
+
 private slots:
     void on_OpenButton_clicked();
     void Read_data();
+    void cleardata();
+    void senddata_text();
+
+    void on_DebugButton_clicked();
+
+public slots:
     void send_order();
 
 private:
     Ui::QPort *ui;
     QSerialPort *serial;
-    QString str_order;
-    QString str_receive;
+    QWidget *Order_Debug;
+    QTextEdit *send;
+    QTextEdit *receive;
+    QPushButton *send_button;
+    QPushButton *clear_button;
+
+    QLabel *manuallabel;
+    QLineEdit *manualorder;
+
+signals:
+    void enable_control(bool);
+
+
 };
 
 #endif // QPORT_H

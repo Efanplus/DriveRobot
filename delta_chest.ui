@@ -219,10 +219,10 @@
        <cursorShape>ArrowCursor</cursorShape>
       </property>
       <property name="minimum">
-       <number>-50</number>
+       <number>-100</number>
       </property>
       <property name="maximum">
-       <number>50</number>
+       <number>100</number>
       </property>
       <property name="orientation">
        <enum>Qt::Horizontal</enum>
@@ -247,13 +247,6 @@
     </font>
    </property>
    <layout class="QHBoxLayout" name="horizontalLayout_2">
-    <item>
-     <widget class="QCheckBox" name="checkBox">
-      <property name="text">
-       <string/>
-      </property>
-     </widget>
-    </item>
     <item>
      <widget class="QLabel" name="label">
       <property name="font">

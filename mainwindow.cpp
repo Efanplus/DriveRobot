@@ -33,7 +33,7 @@ MainWindow::MainWindow(QWidget *parent) :
 //    robot_pic_w->setMaximumSize(400,280);
     QGridLayout *robot_pic_layout = new QGridLayout;
     robot_pic_w->setLayout(robot_pic_layout);
-    cv::Mat pic = cv::imread("D:\\Qt\\DriveRobot\\AutoDriveRobot\\robto.jpg");
+    cv::Mat pic = cv::imread("D:\\Qt\\DriveRobot\\DriveRobot\\robto.jpg");
     QLabel *robot_pic = new QLabel;
     robot_pic_layout->addWidget(robot_pic);
     eye->showpicture(robot_pic,pic);
@@ -70,6 +70,9 @@ MainWindow::MainWindow(QWidget *parent) :
 
     v_layout->addWidget(title);
     v_layout->addWidget(main_layout_box);
+
+    enable_control(false);
+    connect(QPort::instance(),SIGNAL(enable_control(bool)),this,SLOT(enable_control(bool)));
 }
 
 MainWindow::~MainWindow()
@@ -81,3 +84,12 @@ void MainWindow::mousePressEvent(QMouseEvent *event)
 {
     qDebug() << event->pos();
 }
+
+void MainWindow::enable_control(bool flag)
+{
+    head->setEnabled(flag);
+    arm->setEnabled(flag);
+    legs->setEnabled(flag);
+    delta->setEnabled(flag);
+}
+

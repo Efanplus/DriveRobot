@@ -31,6 +31,9 @@ private:
 protected slots:
     void mousePressEvent(QMouseEvent *event);
 
+public slots:
+    void enable_control(bool flag);
+
 private:
     Arm *arm;
     Eye *eye;

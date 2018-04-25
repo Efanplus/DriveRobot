@@ -12,8 +12,8 @@ Eye::Eye(QFrame *parent) :
     this->setLayout(gridlayout);
     gridlayout->addWidget(video_label);
 //    video_label->setMaximumHeight(300);
-    pic_video = cv::imread("D:\\Qt\\DriveRobot\\AutoDriveRobot\\show.jpg");
-    pic = cv::imread("D:\\Qt\\DriveRobot\\AutoDriveRobot\\robto.jpg");
+    pic_video = cv::imread("D:\\Qt\\DriveRobot\\DriveRobot\\show.jpg");
+    pic = cv::imread("D:\\Qt\\DriveRobot\\DriveRobot\\robto.jpg");
     showpicture(video_label,pic_video);
 
     timer = new QTimer(this);

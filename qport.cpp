@@ -3,6 +3,7 @@
 #include "ui_qport.h"
 
 
+
 QPort* QPort::p = NULL;
 
 QPort *QPort::instance()
@@ -38,6 +39,46 @@ QPort::QPort(QWidget *parent) :
     }
     //波特率默认设置为显示第(3+1)项
     ui->BaundBox->setCurrentIndex(3);
+
+    //调试界面，方便调试指令用
+    Order_Debug = new QWidget;
+    send = new QTextEdit;
+    receive = new QTextEdit;
+    send_button = new QPushButton(tr("发送数据"));
+    clear_button = new QPushButton(tr("清空窗口"));
+    QHBoxLayout  *h_buttons = new QHBoxLayout;
+    h_buttons->addWidget(send_button);
+    h_buttons->addWidget(clear_button);
+    QFrame *buttons = new QFrame;
+    buttons->setLayout(h_buttons);
+
+    manuallabel = new QLabel(tr("输入指令"));
+    manualorder = new QLineEdit;
+    QHBoxLayout *h_order = new QHBoxLayout;
+    h_order->addWidget(manuallabel);
+    h_order->addWidget(manualorder);
+    QFrame *order = new QFrame;
+    order->setLayout(h_order);
+
+    QVBoxLayout *V_debug = new QVBoxLayout;
+    Order_Debug->setLayout(V_debug);
+    QGroupBox *send_box = new QGroupBox(tr("发送窗口"));
+    QGroupBox *receive_box = new QGroupBox(tr("接收窗口"));
+    QGridLayout *send_layout = new QGridLayout;
+    QGridLayout *receive_layout = new QGridLayout;
+    send_box->setLayout(send_layout);
+    receive_box->setLayout(receive_layout);
+    send_layout->addWidget(send);
+    receive_layout->addWidget(receive);
+
+    V_debug->addWidget(send_box);
+    V_debug->addWidget(receive_box);
+    V_debug->addWidget(order);
+    V_debug->addWidget(buttons);
+
+
+    connect(clear_button,SIGNAL(clicked(bool)),this,SLOT(cleardata()));
+    connect(send_button,SIGNAL(clicked(bool)),this,SLOT(senddata_text()));
 }
 
 QPort::~QPort()
@@ -141,6 +182,7 @@ void QPort::on_OpenButton_clicked()
 
         //连接信号槽
         QObject::connect(serial, &QSerialPort::readyRead, this, &QPort::Read_data);
+        emit enable_control(true);
     }
     else
     {
@@ -156,6 +198,7 @@ void QPort::on_OpenButton_clicked()
         ui->ParityBox->setEnabled(true);
         ui->StopBox->setEnabled(true);
         ui->OpenButton->setText(tr("打开串口"));
+        emit enable_control(false);
     }
 }
 
@@ -163,19 +206,33 @@ void QPort::Read_data()
 {
     QByteArray buf;
     buf = serial->readAll();
+    if(!buf.isEmpty())
+    {
+        receive->insertPlainText(buf.toHex());
+//        ui->textEdit->insertPlainText("\n");
+    }
     QString sstr;
     sstr = tr(buf.toHex());
     buf.clear();
     //serial->write(buf);
 }
 
+void QPort::cleardata()
+{
+    send->clear();
+    receive->clear();
+}
+
+void QPort::senddata_text()
+{
+    str_order = manualorder->text();
+    send_order();
+}
+
 void QPort::send_order()
 {
     QString str = str_order;
     deBlank(str);
-//    qDebug() << str << endl;
-    QByteArray suanz;
-//    qDebug() << "suanz: " << suanz << endl;
     if(!str.isEmpty())
     {
          int len =str.length();
@@ -188,4 +245,20 @@ void QPort::send_order()
 //         qDebug() << "senddata: " <<senddata << endl;
          serial->write(senddata);//发送到串口
     }
+//    if(send->toPlainText() == NULL)
+//    {
+//        send->setPlainText(str_order);
+//    }
+//    else {
+//        send->setPlainText(ui->Send_text->toPlainText() + "\n" + str_order);
+//    }
+    if(!str_order.isEmpty())
+    {
+        send->insertPlainText(str_order);
+    }
+}
+
+void QPort::on_DebugButton_clicked()
+{
+    Order_Debug->show();
 }
