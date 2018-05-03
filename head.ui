@@ -63,10 +63,10 @@
          <enum>Qt::LeftToRight</enum>
         </property>
         <property name="minimum">
-         <number>-100</number>
+         <number>-180</number>
         </property>
         <property name="maximum">
-         <number>100</number>
+         <number>180</number>
         </property>
         <property name="orientation">
          <enum>Qt::Horizontal</enum>
@@ -115,10 +115,10 @@
          <enum>Qt::LeftToRight</enum>
         </property>
         <property name="minimum">
-         <number>-100</number>
+         <number>-180</number>
         </property>
         <property name="maximum">
-         <number>100</number>
+         <number>180</number>
         </property>
         <property name="orientation">
          <enum>Qt::Horizontal</enum>

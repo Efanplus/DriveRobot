@@ -8,14 +8,24 @@ Eye::Eye(QFrame *parent) :
     ui(new Ui::Eye)
 {
     ui->setupUi(this);
-    QGridLayout *gridlayout = new QGridLayout;
-    this->setLayout(gridlayout);
-    gridlayout->addWidget(video_label);
-//    video_label->setMaximumHeight(300);
+    QVBoxLayout *v_layout = new QVBoxLayout;
+    QHBoxLayout *h_layout = new QHBoxLayout;
+    QWidget *video = new QWidget;
+    QFrame *buttons = new QFrame;
+    this->setLayout(v_layout);
+    v_layout->addWidget(video);
+    v_layout->addWidget(buttons);
+
+    video->setLayout(h_layout);
+    h_layout->addWidget(videoL_label);
+    h_layout->addWidget(videoR_label);
+
+    buttons->setLayout(ui->horizontalLayout);
+    //    video_label->setMaximumHeight(300);
     pic_video = cv::imread("D:\\Qt\\DriveRobot\\DriveRobot\\show.jpg");
     pic = cv::imread("D:\\Qt\\DriveRobot\\DriveRobot\\robto.jpg");
-    showpicture(video_label,pic_video);
-
+    showpicture(videoL_label,pic_video);
+    showpicture(videoR_label,pic);
     timer = new QTimer(this);
     connect(timer,SIGNAL(timeout()),this,SLOT(readFarme()));
 //    openCamera();
@@ -78,22 +88,40 @@ void Eye::showpicture(QLabel *label, cv::Mat image)
 
 void Eye::openCamera()
 {
-    cap.open(0);
-    if(!cap.isOpened())
-        qDebug() << "frame is empty" << endl;
+    capL.open(1);
+    if(!capL.isOpened())
+        qDebug() << "frame is empty(L)" << endl;
+    capR.open(2);
+    if(!capR.isOpened())
+        qDebug() << "frame is empty(R)" << endl;
     timer->start(5);//changing the parameter can adjust the response rate
 }
 
 void Eye::readFarme()
 {
-    cap >> frame;
-    showpicture(video_label,frame);
+    capL >> frameL;
+    showpicture(videoL_label,frameL);
+    capR >> frameR;
+    showpicture(videoR_label,frameR);
 }
 
 void Eye::closeCamera()
 {
     timer->stop();
-    cap.release();
-    video_label->clear();
-    showpicture(video_label,pic);
+    capL.release();
+    capR.release();
+    videoL_label->clear();
+    videoR_label->clear();
+    showpicture(videoL_label,pic);
+    showpicture(videoR_label,pic);
+}
+
+void Eye::on_OpencameraButton_clicked()
+{
+    openCamera();
+}
+
+void Eye::on_ClosecameraButton_clicked()
+{
+    closeCamera();
 }

@@ -42,7 +42,8 @@ public:
     ~Eye();
     QImage Mat2QImage(cv::Mat cvImg);
 
-    QLabel *video_label = new QLabel;
+    QLabel *videoL_label = new QLabel;
+    QLabel *videoR_label = new QLabel;
     cv::Mat pic_video;
     cv::Mat pic;
 
@@ -52,9 +53,11 @@ private:
     Ui::Eye *ui;
 
 private:
-    cv::VideoCapture cap;
+    cv::VideoCapture capL;
+    cv::VideoCapture capR;
     QTimer *timer;
-    cv::Mat frame;
+    cv::Mat frameL;
+    cv::Mat frameR;
     //定义移动驾驶机器人的相机地址
     const string address1 = "http://192.168.10.123:7060/?action=stream.mjpg";
     const string address2 = "http://192.168.10.123:7060/?action=stream.mjpg";
@@ -64,6 +67,8 @@ private slots:
     void readFarme();
     void closeCamera();
 
+    void on_OpencameraButton_clicked();
+    void on_ClosecameraButton_clicked();
 };
 
 #endif // EYE_H

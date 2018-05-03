@@ -33,17 +33,17 @@ MainWindow::MainWindow(QWidget *parent) :
 //    robot_pic_w->setMaximumSize(400,280);
     QGridLayout *robot_pic_layout = new QGridLayout;
     robot_pic_w->setLayout(robot_pic_layout);
-    cv::Mat pic = cv::imread("D:\\Qt\\DriveRobot\\DriveRobot\\robto.jpg");
-    QLabel *robot_pic = new QLabel;
-    robot_pic_layout->addWidget(robot_pic);
-    eye->showpicture(robot_pic,pic);
+//    cv::Mat pic = cv::imread("D:\\Qt\\DriveRobot\\DriveRobot\\robto.jpg");
+//    QLabel *robot_pic = new QLabel;
+//    robot_pic_layout->addWidget(robot_pic);
+//    eye->showpicture(robot_pic,pic);
 //    gridlayout->addWidget(robot_pic_w,0,2);
 
     //串口，眼图像，照片
     QHBoxLayout *h_layout_port_eye = new QHBoxLayout;
     h_layout_port_eye->addWidget(QPort::instance());
     h_layout_port_eye->addWidget(eye);
-    h_layout_port_eye->addWidget(robot_pic_w);
+//    h_layout_port_eye->addWidget(robot_pic_w);
 
     //头和胳膊
     QVBoxLayout *v_layout_head_arm = new QVBoxLayout;
