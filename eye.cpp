@@ -86,9 +86,19 @@ void Eye::showpicture(QLabel *label, cv::Mat image)
     return;
 }
 
+cv::Mat Eye::pic_turn90(cv::Mat image)
+{
+    cv::Mat dst1;
+    cv::transpose(image,dst1);
+    cv::Mat dst2;
+    cv::flip(dst1,dst2,0);
+    return dst2;
+}
+
+
 void Eye::openCamera()
 {
-    capL.open(1);
+    capL.open(0);
     if(!capL.isOpened())
         qDebug() << "frame is empty(L)" << endl;
     capR.open(2);
@@ -100,8 +110,10 @@ void Eye::openCamera()
 void Eye::readFarme()
 {
     capL >> frameL;
+    frameL = pic_turn90(frameL);
     showpicture(videoL_label,frameL);
     capR >> frameR;
+    frameR = pic_turn90(frameR);
     showpicture(videoR_label,frameR);
 }
 

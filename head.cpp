@@ -45,8 +45,15 @@ void Head::on_StartButton_clicked()
     //电机角度控制
     double angle_LR = ui->lineEdit_head_LR->text().toDouble();
     double angle = ui->lineEdit_head->text().toDouble();
-    angle = ((int)(angle*100+0.5));
-    str+=QString("%1").arg((int)angle, 4, 16, QChar('0')).right(4);
+    double angle_suanz = angle_LR;
+    if(angle_suanz < angle)
+        angle_suanz = angle;
+    int t_ms = abs((int)((angle_suanz/10)*1000));
+    int angle_send = ((int)(angle*100+0.5));
+    int angle_LR_send = ((long long)(angle_LR*10000+0.5));
+    str+=QString("%1").arg(t_ms, 4, 16, QChar('0'));
+    str+=QString("%1").arg(angle_send, 4, 16, QChar('0')).right(4);
+    str+=QString("%1").arg(angle_LR_send, 8, 16, QChar('0')).right(8);
     str+="24";
     QPort::instance()->str_order = str;
     emit send_order();

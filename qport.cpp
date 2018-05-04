@@ -209,6 +209,7 @@ void QPort::Read_data()
     if(!buf.isEmpty())
     {
         receive->insertPlainText(buf.toHex());
+        receive->insertPlainText("\n");
 //        ui->textEdit->insertPlainText("\n");
     }
     QString sstr;
@@ -255,6 +256,7 @@ void QPort::send_order()
     if(!str_order.isEmpty())
     {
         send->insertPlainText(str_order);
+        send->insertPlainText("\n");
     }
 }
 

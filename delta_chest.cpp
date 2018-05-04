@@ -61,15 +61,15 @@ void Delta_Chest::onemovesendturn(double angle1,double angle2,double angle3)
     double suanz_angle1 = angle1;
     double suanz_angle2 = angle2;
     double suanz_angle3 = angle3;
-    qDebug() << angle1;
-    qDebug() << angle2;
-    qDebug() << angle3;
+//    qDebug() << angle1;
+//    qDebug() << angle2;
+//    qDebug() << angle3;
     angle1=angle1-now_ang1;
     angle2=angle2-now_ang2;
     angle3=angle3-now_ang3;
-    qDebug() << angle1;
-    qDebug() << angle2;
-    qDebug() << angle3;
+//    qDebug() << angle1;
+//    qDebug() << angle2;
+//    qDebug() << angle3;
 
     now_ang1=suanz_angle1;
     now_ang2=suanz_angle2;
@@ -78,9 +78,9 @@ void Delta_Chest::onemovesendturn(double angle1,double angle2,double angle3)
     int angle1_send = angle_change_send(angle1);
     int angle2_send = angle_change_send(angle2);
     int angle3_send = angle_change_send(angle3);
-    qDebug() << angle1_send;
-    qDebug() << angle2_send;
-    qDebug() << angle3_send;
+//    qDebug() << angle1_send;
+//    qDebug() << angle2_send;
+//    qDebug() << angle3_send;
 
     t_ms = caculate_time(angle1,angle2,angle3);
     str+=QString("%1").arg(t_ms, 4, 16, QChar('0'));
@@ -91,7 +91,7 @@ void Delta_Chest::onemovesendturn(double angle1,double angle2,double angle3)
 
     str+="24";
 
-    qDebug() << str;
+//    qDebug() << str;
     QPort::instance()->str_order = str;
     emit send_order();
 }

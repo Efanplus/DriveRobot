@@ -61,6 +61,7 @@ private:
     //定义移动驾驶机器人的相机地址
     const string address1 = "http://192.168.10.123:7060/?action=stream.mjpg";
     const string address2 = "http://192.168.10.123:7060/?action=stream.mjpg";
+    cv::Mat pic_turn90(cv::Mat image);
 
 private slots:
     void openCamera();
