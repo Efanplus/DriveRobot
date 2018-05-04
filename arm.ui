@@ -39,7 +39,7 @@
        </widget>
       </item>
       <item>
-       <widget class="QLineEdit" name="lineEdit_head">
+       <widget class="QLineEdit" name="lineEdit_arm">
         <property name="font">
          <font>
           <family>Times New Roman</family>
@@ -144,7 +144,7 @@
      </widget>
     </item>
     <item>
-     <widget class="QLineEdit" name="lineEdit_head_now">
+     <widget class="QLineEdit" name="lineEdit_arm_now">
       <property name="font">
        <font>
         <family>Times New Roman</family>

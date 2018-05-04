@@ -234,7 +234,7 @@ void Delta_Chest::on_PauseButton_clicked()
 {
     QString str;
     str="23";
-    str+="05";
+    str+="01";
     str+="24";
 
     QPort::instance()->str_order = str;

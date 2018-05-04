@@ -6,7 +6,7 @@
 #include <QString>
 #include <QMatrix4x4>
 
-//#define Proportion_angle_pulse 1137.777778
+#define Proportion_angle_pulse 1137.777778
 #define PI 3.1415926
 
 

@@ -73,6 +73,7 @@ MainWindow::MainWindow(QWidget *parent) :
 
     enable_control(false);
     connect(QPort::instance(),SIGNAL(enable_control(bool)),this,SLOT(enable_control(bool)));
+
 }
 
 MainWindow::~MainWindow()

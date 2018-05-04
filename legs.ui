@@ -6,30 +6,25 @@
    <rect>
     <x>0</x>
     <y>0</y>
-    <width>491</width>
-    <height>443</height>
+    <width>646</width>
+    <height>586</height>
    </rect>
   </property>
   <property name="windowTitle">
    <string>Form</string>
   </property>
-  <widget class="QWidget" name="layoutWidget">
+  <widget class="QWidget" name="">
    <property name="geometry">
     <rect>
-     <x>110</x>
-     <y>110</y>
-     <width>298</width>
-     <height>271</height>
+     <x>50</x>
+     <y>56</y>
+     <width>368</width>
+     <height>88</height>
     </rect>
    </property>
-   <property name="font">
-    <font>
-     <pointsize>12</pointsize>
-    </font>
-   </property>
-   <layout class="QGridLayout" name="gridLayout">
-    <item row="1" column="0">
-     <widget class="QLabel" name="label_2">
+   <layout class="QGridLayout" name="gridLayout_2">
+    <item row="0" column="0">
+     <widget class="QLabel" name="label_3">
       <property name="font">
        <font>
         <family>楷体</family>
@@ -37,7 +32,7 @@
        </font>
       </property>
       <property name="text">
-       <string>电机2</string>
+       <string>电机1(绝对位置)</string>
       </property>
      </widget>
     </item>
@@ -48,127 +43,6 @@
         <family>Times New Roman</family>
         <pointsize>12</pointsize>
        </font>
-      </property>
-     </widget>
-    </item>
-    <item row="2" column="1">
-     <widget class="QLineEdit" name="lineEdit_C">
-      <property name="font">
-       <font>
-        <family>Times New Roman</family>
-        <pointsize>12</pointsize>
-       </font>
-      </property>
-     </widget>
-    </item>
-    <item row="1" column="1">
-     <widget class="QLineEdit" name="lineEdit_B">
-      <property name="font">
-       <font>
-        <family>Times New Roman</family>
-        <pointsize>12</pointsize>
-       </font>
-      </property>
-     </widget>
-    </item>
-    <item row="4" column="0">
-     <widget class="QLabel" name="label_5">
-      <property name="font">
-       <font>
-        <family>楷体</family>
-        <pointsize>12</pointsize>
-       </font>
-      </property>
-      <property name="text">
-       <string>电机速度</string>
-      </property>
-     </widget>
-    </item>
-    <item row="3" column="0">
-     <widget class="QLabel" name="label_4">
-      <property name="font">
-       <font>
-        <family>楷体</family>
-        <pointsize>12</pointsize>
-       </font>
-      </property>
-      <property name="text">
-       <string>推杆2</string>
-      </property>
-     </widget>
-    </item>
-    <item row="3" column="1">
-     <widget class="QLineEdit" name="lineEdit_D">
-      <property name="font">
-       <font>
-        <family>Times New Roman</family>
-        <pointsize>12</pointsize>
-       </font>
-      </property>
-     </widget>
-    </item>
-    <item row="2" column="0">
-     <widget class="QLabel" name="label">
-      <property name="font">
-       <font>
-        <family>楷体</family>
-        <pointsize>12</pointsize>
-       </font>
-      </property>
-      <property name="text">
-       <string>推杆1</string>
-      </property>
-     </widget>
-    </item>
-    <item row="1" column="2">
-     <widget class="QSlider" name="Slider_2">
-      <property name="minimum">
-       <number>-180</number>
-      </property>
-      <property name="maximum">
-       <number>180</number>
-      </property>
-      <property name="orientation">
-       <enum>Qt::Horizontal</enum>
-      </property>
-     </widget>
-    </item>
-    <item row="5" column="0">
-     <widget class="QPushButton" name="Zero_Button">
-      <property name="font">
-       <font>
-        <family>楷体</family>
-        <pointsize>12</pointsize>
-       </font>
-      </property>
-      <property name="text">
-       <string>归零</string>
-      </property>
-     </widget>
-    </item>
-    <item row="5" column="1">
-     <widget class="QPushButton" name="Start_Button">
-      <property name="font">
-       <font>
-        <family>楷体</family>
-        <pointsize>12</pointsize>
-       </font>
-      </property>
-      <property name="text">
-       <string>开始</string>
-      </property>
-     </widget>
-    </item>
-    <item row="2" column="2">
-     <widget class="QSlider" name="Slider_3">
-      <property name="minimum">
-       <number>-180</number>
-      </property>
-      <property name="maximum">
-       <number>180</number>
-      </property>
-      <property name="orientation">
-       <enum>Qt::Horizontal</enum>
       </property>
      </widget>
     </item>
@@ -185,8 +59,31 @@
       </property>
      </widget>
     </item>
-    <item row="3" column="2">
-     <widget class="QSlider" name="Slider_4">
+    <item row="1" column="0">
+     <widget class="QLabel" name="label_2">
+      <property name="font">
+       <font>
+        <family>楷体</family>
+        <pointsize>12</pointsize>
+       </font>
+      </property>
+      <property name="text">
+       <string>电机2(绝对位置)</string>
+      </property>
+     </widget>
+    </item>
+    <item row="1" column="1">
+     <widget class="QLineEdit" name="lineEdit_B">
+      <property name="font">
+       <font>
+        <family>Times New Roman</family>
+        <pointsize>12</pointsize>
+       </font>
+      </property>
+     </widget>
+    </item>
+    <item row="1" column="2">
+     <widget class="QSlider" name="Slider_2">
       <property name="minimum">
        <number>-180</number>
       </property>
@@ -198,18 +95,34 @@
       </property>
      </widget>
     </item>
-    <item row="4" column="1" colspan="2">
-     <widget class="QLineEdit" name="lineEdit_v">
+    <item row="2" column="0">
+     <widget class="QPushButton" name="Zero_Button_2">
       <property name="font">
        <font>
-        <family>Times New Roman</family>
+        <family>楷体</family>
         <pointsize>12</pointsize>
        </font>
       </property>
+      <property name="text">
+       <string>归零</string>
+      </property>
      </widget>
     </item>
-    <item row="5" column="2">
-     <widget class="QPushButton" name="Close_Button">
+    <item row="2" column="1">
+     <widget class="QPushButton" name="Start_Button_2">
+      <property name="font">
+       <font>
+        <family>楷体</family>
+        <pointsize>12</pointsize>
+       </font>
+      </property>
+      <property name="text">
+       <string>开始</string>
+      </property>
+     </widget>
+    </item>
+    <item row="2" column="2">
+     <widget class="QPushButton" name="Close_Button_2">
       <property name="font">
        <font>
         <family>楷体</family>
@@ -221,8 +134,20 @@
       </property>
      </widget>
     </item>
+   </layout>
+  </widget>
+  <widget class="QWidget" name="">
+   <property name="geometry">
+    <rect>
+     <x>54</x>
+     <y>178</y>
+     <width>483</width>
+     <height>88</height>
+    </rect>
+   </property>
+   <layout class="QGridLayout" name="gridLayout_3">
     <item row="0" column="0">
-     <widget class="QLabel" name="label_3">
+     <widget class="QLabel" name="label">
       <property name="font">
        <font>
         <family>楷体</family>
@@ -230,7 +155,109 @@
        </font>
       </property>
       <property name="text">
-       <string>电机1</string>
+       <string>推杆1(相对位置)</string>
+      </property>
+     </widget>
+    </item>
+    <item row="0" column="1">
+     <widget class="QLineEdit" name="lineEdit_C">
+      <property name="font">
+       <font>
+        <family>Times New Roman</family>
+        <pointsize>12</pointsize>
+       </font>
+      </property>
+     </widget>
+    </item>
+    <item row="0" column="2">
+     <widget class="QLabel" name="label_6">
+      <property name="font">
+       <font>
+        <family>楷体</family>
+       </font>
+      </property>
+      <property name="text">
+       <string>当前角度：</string>
+      </property>
+     </widget>
+    </item>
+    <item row="0" column="3">
+     <widget class="QLineEdit" name="lineEdit"/>
+    </item>
+    <item row="1" column="0">
+     <widget class="QLabel" name="label_4">
+      <property name="font">
+       <font>
+        <family>楷体</family>
+        <pointsize>12</pointsize>
+       </font>
+      </property>
+      <property name="text">
+       <string>推杆2(相对位置)</string>
+      </property>
+     </widget>
+    </item>
+    <item row="1" column="1">
+     <widget class="QLineEdit" name="lineEdit_D">
+      <property name="font">
+       <font>
+        <family>Times New Roman</family>
+        <pointsize>12</pointsize>
+       </font>
+      </property>
+     </widget>
+    </item>
+    <item row="1" column="2">
+     <widget class="QLabel" name="label_7">
+      <property name="font">
+       <font>
+        <family>楷体</family>
+       </font>
+      </property>
+      <property name="text">
+       <string>当前转角：</string>
+      </property>
+     </widget>
+    </item>
+    <item row="1" column="3">
+     <widget class="QLineEdit" name="lineEdit_2"/>
+    </item>
+    <item row="2" column="0">
+     <widget class="QPushButton" name="Zero_Button">
+      <property name="font">
+       <font>
+        <family>楷体</family>
+        <pointsize>12</pointsize>
+       </font>
+      </property>
+      <property name="text">
+       <string>归零</string>
+      </property>
+     </widget>
+    </item>
+    <item row="2" column="1" colspan="2">
+     <widget class="QPushButton" name="Start_Button">
+      <property name="font">
+       <font>
+        <family>楷体</family>
+        <pointsize>12</pointsize>
+       </font>
+      </property>
+      <property name="text">
+       <string>开始</string>
+      </property>
+     </widget>
+    </item>
+    <item row="2" column="3">
+     <widget class="QPushButton" name="Close_Button">
+      <property name="font">
+       <font>
+        <family>楷体</family>
+        <pointsize>12</pointsize>
+       </font>
+      </property>
+      <property name="text">
+       <string>停止</string>
       </property>
      </widget>
     </item>

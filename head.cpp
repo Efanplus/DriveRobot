@@ -58,3 +58,26 @@ void Head::on_StartButton_clicked()
     QPort::instance()->str_order = str;
     emit send_order();
 }
+
+void Head::on_Slider_head_LR_valueChanged(int value)
+{
+    QString tem;
+    ui->lineEdit_head_LR->setText(tem.setNum(ui->Slider_head_LR->value()));
+}
+
+void Head::on_Slider_head_valueChanged(int value)
+{
+    QString tem;
+    ui->lineEdit_head->setText(tem.setNum(ui->Slider_head->value()));
+}
+
+void Head::on_PauseButton_clicked()
+{
+    QString str;
+    str.clear();
+    str="23";
+    str+="05";
+    str+="24";
+    QPort::instance()->str_order = str;
+    emit send_order();
+}
