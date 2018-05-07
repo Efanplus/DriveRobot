@@ -24,11 +24,13 @@ private slots:
 
     void on_StartButton_clicked();
 
-    void on_Slider_head_LR_valueChanged(int value);
+//    void on_Slider_head_LR_valueChanged(int value);
 
-    void on_Slider_head_valueChanged(int value);
+//    void on_Slider_head_valueChanged(int value);
 
     void on_PauseButton_clicked();
+
+    void on_StartButton_2_clicked();
 
 private:
     Ui::Head *ui;

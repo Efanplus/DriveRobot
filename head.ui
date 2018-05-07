@@ -49,27 +49,15 @@
        </widget>
       </item>
       <item>
-       <widget class="QSlider" name="Slider_head_LR">
+       <widget class="QPushButton" name="StartButton">
         <property name="font">
          <font>
-          <family>Times New Roman</family>
+          <family>楷体</family>
           <pointsize>12</pointsize>
          </font>
         </property>
-        <property name="cursor">
-         <cursorShape>ArrowCursor</cursorShape>
-        </property>
-        <property name="layoutDirection">
-         <enum>Qt::LeftToRight</enum>
-        </property>
-        <property name="minimum">
-         <number>-180</number>
-        </property>
-        <property name="maximum">
-         <number>180</number>
-        </property>
-        <property name="orientation">
-         <enum>Qt::Horizontal</enum>
+        <property name="text">
+         <string>运动</string>
         </property>
        </widget>
       </item>
@@ -101,27 +89,15 @@
        </widget>
       </item>
       <item>
-       <widget class="QSlider" name="Slider_head">
+       <widget class="QPushButton" name="StartButton_2">
         <property name="font">
          <font>
-          <family>Times New Roman</family>
+          <family>楷体</family>
           <pointsize>12</pointsize>
          </font>
         </property>
-        <property name="cursor">
-         <cursorShape>ArrowCursor</cursorShape>
-        </property>
-        <property name="layoutDirection">
-         <enum>Qt::LeftToRight</enum>
-        </property>
-        <property name="minimum">
-         <number>-180</number>
-        </property>
-        <property name="maximum">
-         <number>180</number>
-        </property>
-        <property name="orientation">
-         <enum>Qt::Horizontal</enum>
+        <property name="text">
+         <string>运动</string>
         </property>
        </widget>
       </item>
@@ -139,19 +115,6 @@
         </property>
         <property name="text">
          <string>归零</string>
-        </property>
-       </widget>
-      </item>
-      <item>
-       <widget class="QPushButton" name="StartButton">
-        <property name="font">
-         <font>
-          <family>楷体</family>
-          <pointsize>12</pointsize>
-         </font>
-        </property>
-        <property name="text">
-         <string>运动</string>
         </property>
        </widget>
       </item>
