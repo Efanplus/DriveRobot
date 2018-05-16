@@ -86,12 +86,15 @@ void Eye::showpicture(QLabel *label, cv::Mat image)
     return;
 }
 
-cv::Mat Eye::pic_turn90(cv::Mat image)
+cv::Mat Eye::pic_turn90(cv::Mat image,int camera_name)
 {
     cv::Mat dst1;
     cv::transpose(image,dst1);
     cv::Mat dst2;
-    cv::flip(dst1,dst2,0);
+    if(camera_name == 1)
+        cv::flip(dst1,dst2,0);
+    else if(camera_name == 2)
+        cv::flip(dst1,dst2,1);
     return dst2;
 }
 
@@ -110,10 +113,10 @@ void Eye::openCamera()
 void Eye::readFarme()
 {
     capL >> frameL;
-    frameL = pic_turn90(frameL);
+    frameL = pic_turn90(frameL,1);
     showpicture(videoL_label,frameL);
     capR >> frameR;
-    frameR = pic_turn90(frameR);
+    frameR = pic_turn90(frameR,2);
     showpicture(videoR_label,frameR);
 }
 

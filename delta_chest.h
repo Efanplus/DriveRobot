@@ -8,6 +8,14 @@
 #include <QGroupBox>
 #include "qport.h"
 
+#define angle1_zero 30
+#define angle2_zero 30
+#define angle3_zero 30
+
+#define x_zero 0
+#define y_zero 0
+#define z_zero -321.0946
+
 
 namespace Ui {
 class Delta_Chest;
@@ -60,13 +68,13 @@ private:
     double angle_2;
     double angle_3;
 
-    double x_now = 0;
-    double y_now = 0;
-    double z_now = -193.71;
+    double x_now = x_zero;
+    double y_now = y_zero;
+    double z_now = z_zero;
     void setvalue_now();
-    double now_ang1 = 90;
-    double now_ang2 = 90;
-    double now_ang3 = 90;
+    double now_ang1 = angle1_zero;
+    double now_ang2 = angle2_zero;
+    double now_ang3 = angle3_zero;
 
     double x_axis;
     double y_axis;

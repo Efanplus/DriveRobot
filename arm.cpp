@@ -48,6 +48,7 @@ void Arm::on_StartButton_2_clicked()
     QString str;
     str.clear();
     str="23";
+    str += "21";
     double angle = ui->lineEdit_arm->text().toDouble();
     if(angle > 0)
         str += "00";

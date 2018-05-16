@@ -98,6 +98,13 @@ void Delta_Chest::onemovesendturn(double angle1,double angle2,double angle3)
 
 void Delta_Chest::inverse_slove(double &re_ang1,double &re_ang2,double &re_ang3,double x,double y,double z)
 {
+    /******************************************
+     * delta基座变化
+     * ****************************************/
+//    double x_suanz = x*qCos(45)-y*qSin(45);
+//    double y_suanz = x*qSin(45)+y*qCos(45);
+//    x = x_suanz;
+//    y = y_suanz;
     double K1=(pow(La,2)-pow(Lb,2)-pow(x,2)-pow(y,2)-pow(z,2)-pow((R-r),2)+(R-r)*(sqrt(3)*x+y))/Lb+2*z;
     double U1=(-4)*(R-r-(sqrt(3)/2)*x-(1/2)*y);
     double V1=K1-4*z;
@@ -201,13 +208,13 @@ void Delta_Chest::on_ZeroButton_clicked()
     /********************
      * 发送归零指令
      * ***************/
-    x_now = 0;
-    y_now = 0;
-    z_now = -193.71;
+    x_now = x_zero;
+    y_now = y_zero;
+    z_now = z_zero;
 //    setvalue_now();
-    now_ang1 = 90;
-    now_ang2 = 90;
-    now_ang3 = 90;
+    now_ang1 = angle1_zero;
+    now_ang2 = angle2_zero;
+    now_ang3 = angle3_zero;
 
     QString str="23";
     str+="04";
