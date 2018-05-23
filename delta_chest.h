@@ -8,13 +8,14 @@
 #include <QGroupBox>
 #include "qport.h"
 
-#define angle1_zero 30
-#define angle2_zero 30
-#define angle3_zero 30
+#define angle1_zero 43.8574
+#define angle2_zero 43.8574
+#define angle3_zero 43.8574
+//-330 24.357
 
 #define x_zero 0
 #define y_zero 0
-#define z_zero -321.0946
+#define z_zero -295
 
 
 namespace Ui {
@@ -31,6 +32,7 @@ public:
 
     void onemovesendturn(double angle1,double angle2,double angle3);
     int t_ms = 8000;
+    void showpostion_now();
 
 private slots:
     void on_ZeroButton_clicked();
@@ -50,6 +52,7 @@ private slots:
     void on_horizontalSlider_y_sliderReleased();
 
     void on_horizontalSlider_z_sliderReleased();
+
 
 private:
     Ui::Delta_Chest *ui;

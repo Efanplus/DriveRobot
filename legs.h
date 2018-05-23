@@ -35,6 +35,8 @@ private slots:
 
     void on_Close_Button_clicked();
 
+    void on_pushButton_clicked();
+
 private:
     Ui::Legs *ui;
     double angle_now_1 = 0;

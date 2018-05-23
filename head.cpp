@@ -2,6 +2,7 @@
 #include "head.h"
 #include "ui_head.h"
 #include "qport.h"
+#include "qsingleton.h"
 
 Head::Head(QWidget *parent) :
     QWidget(parent),
@@ -28,9 +29,9 @@ void Head::on_ZeroButton_clicked()
 {
     QString str;
     str.clear();
-    str="23";
+    str=order_start;
     str+="09";
-    str+="24";
+    str+=order_end;
     QPort::instance()->str_order = str;
     emit send_order();
 }
@@ -39,7 +40,7 @@ void Head::on_StartButton_clicked()
 {
     QString str;
     str.clear();
-    str="23";
+    str=order_start;
     str+="07";
     //运动时间
     //电机角度控制
@@ -48,7 +49,7 @@ void Head::on_StartButton_clicked()
     int angle_LR_send = ((int)(angle_LR*100+0.5));
     str+=QString("%1").arg(t_ms, 4, 16, QChar('0'));
     str+=QString("%1").arg(angle_LR_send, 4, 16, QChar('0')).right(4);
-    str+="24";
+    str+=order_end;
     QPort::instance()->str_order = str;
     emit send_order();
 }
@@ -69,9 +70,9 @@ void Head::on_PauseButton_clicked()
 {
     QString str;
     str.clear();
-    str="23";
+    str=order_start;
     str+="05";
-    str+="24";
+    str+=order_end;
     QPort::instance()->str_order = str;
     emit send_order();
 }
@@ -80,14 +81,14 @@ void Head::on_StartButton_2_clicked()
 {
     QString str;
     str.clear();
-    str="23";
+    str=order_start;
     str+="08";
     //运动时间
     //电机角度控制
     double angle = ui->lineEdit_head->text().toDouble();
     int angle_send = ((int)(angle*10000+0.5));
     str+=QString("%1").arg(angle_send, 8, 16, QChar('0')).right(8);
-    str+="24";
+    str+=order_end;
     QPort::instance()->str_order = str;
     emit send_order();
 }

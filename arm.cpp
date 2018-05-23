@@ -1,6 +1,7 @@
 ﻿#pragma execution_character_set("utf-8")
 #include "arm.h"
 #include "ui_arm.h"
+#include "qsingleton.h"
 
 Arm::Arm(QWidget *parent) :
     QWidget(parent),
@@ -33,9 +34,9 @@ void Arm::on_ZeroButton_2_clicked()
 {
     QString str;
     str.clear();
-    str="23";
+    str=order_start;
     str+="2001";
-    str+="24";
+    str+=order_end;
     QPort::instance()->str_order = str;
     emit send_order();
     angle_now = 0;
@@ -47,7 +48,7 @@ void Arm::on_StartButton_2_clicked()
 {
     QString str;
     str.clear();
-    str="23";
+    str=order_start;
     str += "21";
     double angle = ui->lineEdit_arm->text().toDouble();
     if(angle > 0)
@@ -57,17 +58,18 @@ void Arm::on_StartButton_2_clicked()
     /****************************
      * 电机速度设定
      * **************************/
-    str += "32";
+    str += "40";
 
     uint angle_send = (int)(abs(angle) * 10 + 0.5);
     str += QString("%1").arg(angle_send,4,16,QLatin1Char('0'));
-    str+="24";
+    str+=order_end;
     QPort::instance()->str_order = str;
     emit send_order();
     angle_now = ui->lineEdit_arm_now->text().toDouble();
     angle_now += angle;
     QString tem;
     ui->lineEdit_arm_now->setText(tem.setNum(angle_now));
+    ui->horizontalSlider_x_2->setValue(0);
 }
 
 void Arm::on_horizontalSlider_x_2_valueChanged(int value)
@@ -80,9 +82,9 @@ void Arm::on_PauseButton_2_clicked()
 {
     QString str;
     str.clear();
-    str="23";
+    str=order_start;
     str+="260B";
-    str+="24";
+    str+=order_end;
     QPort::instance()->str_order = str;
     emit send_order();
 }

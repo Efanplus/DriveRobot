@@ -129,10 +129,10 @@
        <enum>Qt::LeftToRight</enum>
       </property>
       <property name="minimum">
-       <number>-100</number>
+       <number>-40</number>
       </property>
       <property name="maximum">
-       <number>100</number>
+       <number>40</number>
       </property>
       <property name="orientation">
        <enum>Qt::Horizontal</enum>
@@ -174,10 +174,10 @@
        <cursorShape>ArrowCursor</cursorShape>
       </property>
       <property name="minimum">
-       <number>-100</number>
+       <number>-40</number>
       </property>
       <property name="maximum">
-       <number>100</number>
+       <number>40</number>
       </property>
       <property name="orientation">
        <enum>Qt::Horizontal</enum>
@@ -219,10 +219,10 @@
        <cursorShape>ArrowCursor</cursorShape>
       </property>
       <property name="minimum">
-       <number>-100</number>
+       <number>-20</number>
       </property>
       <property name="maximum">
-       <number>100</number>
+       <number>20</number>
       </property>
       <property name="orientation">
        <enum>Qt::Horizontal</enum>

@@ -22,8 +22,8 @@ Eye::Eye(QFrame *parent) :
 
     buttons->setLayout(ui->horizontalLayout);
     //    video_label->setMaximumHeight(300);
-    pic_video = cv::imread("D:\\Qt\\DriveRobot\\DriveRobot\\show.jpg");
-    pic = cv::imread("D:\\Qt\\DriveRobot\\DriveRobot\\robto.jpg");
+    pic_video = cv::imread("..\\show.jpg");
+    pic = cv::imread("..\\robto.jpg");
     showpicture(videoL_label,pic_video);
     showpicture(videoR_label,pic);
     timer = new QTimer(this);
@@ -104,7 +104,7 @@ void Eye::openCamera()
     capL.open(0);
     if(!capL.isOpened())
         qDebug() << "frame is empty(L)" << endl;
-    capR.open(2);
+    capR.open(1);
     if(!capR.isOpened())
         qDebug() << "frame is empty(R)" << endl;
     timer->start(5);//changing the parameter can adjust the response rate

@@ -13,30 +13,17 @@
   <property name="windowTitle">
    <string>Form</string>
   </property>
-  <widget class="QWidget" name="">
+  <widget class="QWidget" name="layoutWidget">
    <property name="geometry">
     <rect>
      <x>50</x>
      <y>56</y>
-     <width>368</width>
+     <width>389</width>
      <height>88</height>
     </rect>
    </property>
    <layout class="QGridLayout" name="gridLayout_2">
-    <item row="0" column="0">
-     <widget class="QLabel" name="label_3">
-      <property name="font">
-       <font>
-        <family>楷体</family>
-        <pointsize>12</pointsize>
-       </font>
-      </property>
-      <property name="text">
-       <string>电机1(绝对位置)</string>
-      </property>
-     </widget>
-    </item>
-    <item row="0" column="1">
+    <item row="1" column="1">
      <widget class="QLineEdit" name="lineEdit_A">
       <property name="font">
        <font>
@@ -46,52 +33,13 @@
       </property>
      </widget>
     </item>
-    <item row="0" column="2">
-     <widget class="QSlider" name="Slider_1">
-      <property name="minimum">
-       <number>-180</number>
-      </property>
-      <property name="maximum">
-       <number>180</number>
-      </property>
-      <property name="orientation">
-       <enum>Qt::Horizontal</enum>
-      </property>
-     </widget>
-    </item>
-    <item row="1" column="0">
-     <widget class="QLabel" name="label_2">
-      <property name="font">
-       <font>
-        <family>楷体</family>
-        <pointsize>12</pointsize>
-       </font>
-      </property>
-      <property name="text">
-       <string>电机2(绝对位置)</string>
-      </property>
-     </widget>
-    </item>
-    <item row="1" column="1">
+    <item row="0" column="1">
      <widget class="QLineEdit" name="lineEdit_B">
       <property name="font">
        <font>
         <family>Times New Roman</family>
         <pointsize>12</pointsize>
        </font>
-      </property>
-     </widget>
-    </item>
-    <item row="1" column="2">
-     <widget class="QSlider" name="Slider_2">
-      <property name="minimum">
-       <number>-180</number>
-      </property>
-      <property name="maximum">
-       <number>180</number>
-      </property>
-      <property name="orientation">
-       <enum>Qt::Horizontal</enum>
       </property>
      </widget>
     </item>
@@ -108,6 +56,19 @@
       </property>
      </widget>
     </item>
+    <item row="2" column="3">
+     <widget class="QPushButton" name="Close_Button_2">
+      <property name="font">
+       <font>
+        <family>楷体</family>
+        <pointsize>12</pointsize>
+       </font>
+      </property>
+      <property name="text">
+       <string>停止</string>
+      </property>
+     </widget>
+    </item>
     <item row="2" column="1">
      <widget class="QPushButton" name="Start_Button_2">
       <property name="font">
@@ -121,8 +82,8 @@
       </property>
      </widget>
     </item>
-    <item row="2" column="2">
-     <widget class="QPushButton" name="Close_Button_2">
+    <item row="1" column="0">
+     <widget class="QLabel" name="label_2">
       <property name="font">
        <font>
         <family>楷体</family>
@@ -130,13 +91,65 @@
        </font>
       </property>
       <property name="text">
-       <string>停止</string>
+       <string>右腿电机(绝对位置)</string>
+      </property>
+     </widget>
+    </item>
+    <item row="0" column="0">
+     <widget class="QLabel" name="label_3">
+      <property name="font">
+       <font>
+        <family>楷体</family>
+        <pointsize>12</pointsize>
+       </font>
+      </property>
+      <property name="text">
+       <string>左腿电机(绝对位置)</string>
+      </property>
+     </widget>
+    </item>
+    <item row="2" column="2">
+     <widget class="QPushButton" name="pushButton">
+      <property name="font">
+       <font>
+        <family>楷体</family>
+        <pointsize>12</pointsize>
+       </font>
+      </property>
+      <property name="text">
+       <string>松开抱闸</string>
+      </property>
+     </widget>
+    </item>
+    <item row="1" column="2" colspan="2">
+     <widget class="QSlider" name="Slider_1">
+      <property name="minimum">
+       <number>-180</number>
+      </property>
+      <property name="maximum">
+       <number>180</number>
+      </property>
+      <property name="orientation">
+       <enum>Qt::Horizontal</enum>
+      </property>
+     </widget>
+    </item>
+    <item row="0" column="2" colspan="2">
+     <widget class="QSlider" name="Slider_2">
+      <property name="minimum">
+       <number>-180</number>
+      </property>
+      <property name="maximum">
+       <number>180</number>
+      </property>
+      <property name="orientation">
+       <enum>Qt::Horizontal</enum>
       </property>
      </widget>
     </item>
    </layout>
   </widget>
-  <widget class="QWidget" name="">
+  <widget class="QWidget" name="layoutWidget">
    <property name="geometry">
     <rect>
      <x>54</x>
@@ -155,7 +168,7 @@
        </font>
       </property>
       <property name="text">
-       <string>推杆1(相对位置)</string>
+       <string>左推杆(相对位置)</string>
       </property>
      </widget>
     </item>
@@ -174,6 +187,7 @@
       <property name="font">
        <font>
         <family>楷体</family>
+        <pointsize>12</pointsize>
        </font>
       </property>
       <property name="text">
@@ -193,7 +207,7 @@
        </font>
       </property>
       <property name="text">
-       <string>推杆2(相对位置)</string>
+       <string>右推杆(相对位置)</string>
       </property>
      </widget>
     </item>
@@ -212,6 +226,7 @@
       <property name="font">
        <font>
         <family>楷体</family>
+        <pointsize>12</pointsize>
        </font>
       </property>
       <property name="text">

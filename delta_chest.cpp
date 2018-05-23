@@ -5,6 +5,7 @@
 #include <QMessageBox>
 #include <QtMath>
 #include <QDebug>
+#include "qsingleton.h"
 
 
 Delta_Chest::Delta_Chest(QWidget *parent) :
@@ -54,7 +55,7 @@ void Delta_Chest::onemovesendturn(double angle1,double angle2,double angle3)
 {
     QString str;
     str.clear();
-    str="23";
+    str=order_start;
     str+="00";
 //当前运动执行完毕后，当前电机角度记录发生变化
 
@@ -89,11 +90,19 @@ void Delta_Chest::onemovesendturn(double angle1,double angle2,double angle3)
     str+=QString("%1").arg((int)angle2_send, 4, 16, QChar('0')).right(4);
     str+=QString("%1").arg((int)angle3_send, 4, 16, QChar('0')).right(4);
 
-    str+="24";
+    str+=order_end;
 
 //    qDebug() << str;
     QPort::instance()->str_order = str;
     emit send_order();
+}
+
+void Delta_Chest::showpostion_now()
+{
+    QString tempStr;
+    ui->x_coordinate->setText(tempStr.setNum(x_now));
+    ui->y_coordinate->setText(tempStr.setNum(y_now));
+    ui->z_coordinate->setText(tempStr.setNum(z_now));
 }
 
 void Delta_Chest::inverse_slove(double &re_ang1,double &re_ang2,double &re_ang3,double x,double y,double z)
@@ -190,7 +199,7 @@ int Delta_Chest::caculate_time(double angle1, double angle2, double angle3)
     double angle_suanz = abs(angle1);
     if(angle_suanz < abs(angle2))angle_suanz = abs(angle2);
     if(angle_suanz < abs(angle3))angle_suanz = abs(angle3);
-    t_ms = (int)(angle_suanz*100);
+    t_ms = (int)(angle_suanz*1000/50);
     return t_ms;
 }
 
@@ -216,9 +225,9 @@ void Delta_Chest::on_ZeroButton_clicked()
     now_ang2 = angle2_zero;
     now_ang3 = angle3_zero;
 
-    QString str="23";
+    QString str=order_start;
     str+="04";
-    str+="24";
+    str+=order_end;
 
     QPort::instance()->str_order = str;
     emit send_order();
@@ -240,9 +249,9 @@ void Delta_Chest::on_StartButton_clicked()
 void Delta_Chest::on_PauseButton_clicked()
 {
     QString str;
-    str="23";
+    str=order_start;
     str+="01";
-    str+="24";
+    str+=order_end;
 
     QPort::instance()->str_order = str;
     emit send_order();
@@ -254,14 +263,16 @@ void Delta_Chest::on_lineEdit_x_textChanged(const QString &arg1)
     x_now = x_axis + x_now;
     inverse_slove(angle_1,angle_2,angle_3,x_now,y_now,z_now);
     onemovesendturn(angle_1,angle_2,angle_3);
+    showpostion_now();
 }
 
 void Delta_Chest::on_lineEdit_y_textChanged(const QString &arg1)
 {
     y_axis = ui->lineEdit_y->text().toDouble();
-    y_now = y_axis + x_now;
+    y_now = y_axis + y_now;
     inverse_slove(angle_1,angle_2,angle_3,x_now,y_now,z_now);
     onemovesendturn(angle_1,angle_2,angle_3);
+    showpostion_now();
 }
 
 void Delta_Chest::on_lineEdit_z_textChanged(const QString &arg1)
@@ -270,6 +281,7 @@ void Delta_Chest::on_lineEdit_z_textChanged(const QString &arg1)
     z_now = z_axis + z_now;
     inverse_slove(angle_1,angle_2,angle_3,x_now,y_now,z_now);
     onemovesendturn(angle_1,angle_2,angle_3);
+    showpostion_now();
 }
 
 void Delta_Chest::on_horizontalSlider_x_sliderReleased()
@@ -292,6 +304,6 @@ void Delta_Chest::on_horizontalSlider_z_sliderReleased()
 {
     QString tempStr;
     double z_axis_suanz = ui->horizontalSlider_z->value();
-    ui->lineEdit_z->setText(tempStr.setNum(z_axis_suanz));
+    ui->lineEdit_z->setText(tempStr.setNum(-z_axis_suanz));
     ui->horizontalSlider_z->setSliderPosition(0);
 }

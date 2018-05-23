@@ -34,16 +34,16 @@ void Legs::on_Zero_Button_clicked()
 {
     QString str;
     str.clear();
-    str="23";
+    str=order_start;
     str+="2004";
-    str+="24";
+    str+=order_end;
     QPort::instance()->str_order = str;
     emit send_order();
     update_angle(1);
     str.clear();
-    str="23";
+    str=order_start;
     str+="2005";
-    str+="24";
+    str+=order_end;
     QPort::instance()->str_order = str;
     emit send_order();
     update_angle(2);
@@ -53,15 +53,15 @@ void Legs::on_Zero_Button_2_clicked()
 {
     QString str;
     str.clear();
-    str="23";
+    str=order_start;
     str+="2002";
-    str+="24";
+    str+=order_end;
     QPort::instance()->str_order = str;
     emit send_order();
     str.clear();
-    str="23";
+    str=order_start;
     str+="2003";
-    str+="24";
+    str+=order_end;
     QPort::instance()->str_order = str;
     emit send_order();
 }
@@ -72,20 +72,20 @@ void Legs::on_Start_Button_2_clicked()
     {
         QString str;
         str.clear();
-        str="23";
+        str=order_start;
         str+="240001";
-        str+="24";
+        str+=order_end;
         QPort::instance()->str_order = str;
         emit send_order();
         str.clear();
-        str="23";
+        str=order_start;
         str+="240100";
-        str+="24";
+        str+=order_end;
         QPort::instance()->str_order = str;
         emit send_order();
 
         str.clear();
-        str="23";
+        str=order_start;
         str += "22";
         str += "0A";
         double joint_v = 10;
@@ -93,7 +93,7 @@ void Legs::on_Start_Button_2_clicked()
         double angle_1 = ui->lineEdit_A->text().toDouble();
         int angle_1_send = angle_1*Proportion_angle_pulse;
         str += QString("%1").arg(angle_1_send,8,16,QLatin1Char('0')).right(8);
-        str += "24";
+        str += order_end;
         QPort::instance()->str_order = str;
         emit send_order();
         ui->lineEdit_A->clear();
@@ -102,20 +102,20 @@ void Legs::on_Start_Button_2_clicked()
     {
         QString str;
         str.clear();
-        str="23";
+        str=order_start;
         str+="240101";
-        str+="24";
+        str+=order_end;
         QPort::instance()->str_order = str;
         emit send_order();
         str.clear();
-        str="23";
+        str=order_start;
         str+="240000";
-        str+="24";
+        str+=order_end;
         QPort::instance()->str_order = str;
         emit send_order();
 
         str.clear();
-        str="23";
+        str=order_start;
         str += "22";
         str += "0C";
         double joint_v = 10;
@@ -123,7 +123,7 @@ void Legs::on_Start_Button_2_clicked()
         double angle_2 = ui->lineEdit_B->text().toDouble();
         int angle_2_send = angle_2*Proportion_angle_pulse;
         str += QString("%1").arg(angle_2_send,8,16,QLatin1Char('0')).right(8);
-        str += "24";
+        str += order_end;
         QPort::instance()->str_order = str;
         emit send_order();
         ui->lineEdit_B->clear();
@@ -134,7 +134,7 @@ void Legs::on_Start_Button_clicked()
 {
     QString str;
     str.clear();
-    str="23";
+    str=order_start;
     str += "25";
 
     if(!ui->lineEdit_C->text().isEmpty())
@@ -163,7 +163,7 @@ void Legs::on_Start_Button_clicked()
         angle_now_2 += angle_4;
         update_angle(2);
     }
-    str += "24";
+    str += order_end;
     QPort::instance()->str_order = str;
     emit send_order();
     ui->lineEdit_C->clear();
@@ -174,18 +174,18 @@ void Legs::update_angle(int num)
 {
     QString tem;
     if(num == 1)
-        ui->lineEdit_C->setText(tem.setNum(angle_now_1));
+        ui->lineEdit->setText(tem.setNum(angle_now_1));
     else if(num == 2)
-        ui->lineEdit_D->setText(tem.setNum(angle_now_2));
+        ui->lineEdit_2->setText(tem.setNum(angle_now_2));
 }
 
 void Legs::create_send_order(QString str_order)
 {
     QString str;
     str.clear();
-    str="23";
+    str=order_start;
     str+=str_order;
-    str+="24";
+    str+=order_end;
     QPort::instance()->str_order = str;
     emit send_order();
 }
@@ -200,4 +200,25 @@ void Legs::on_Close_Button_clicked()
 {
     create_send_order("260D");
     create_send_order("260E");
+}
+
+
+/***********************************
+*@抱闸松开
+* ************************************/
+void Legs::on_pushButton_clicked()
+{
+    QString str;
+    str.clear();
+    str=order_start;
+    str+="240001";
+    str+=order_end;
+    QPort::instance()->str_order = str;
+    emit send_order();
+    str.clear();
+    str=order_start;
+    str+="240101";
+    str+=order_end;
+    QPort::instance()->str_order = str;
+    emit send_order();
 }
